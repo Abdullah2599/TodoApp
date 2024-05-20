@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+// import 'package:flutter/widgets.dart';
 import 'package:todo_app/models/expense.dart';
+import 'package:todo_app/widgets/chart/chart.dart';
 import 'package:todo_app/widgets/expenses_list/expenses_list.dart';
 import 'package:todo_app/widgets/new_expense.dart';
 
@@ -15,13 +16,13 @@ class _ExpensesState extends State<Expenses> {
   final List<Expense> _registerdExpenses = [
     Expense(
       title: 'Course',
-      amount: 19.88,
+      amount: 15000.00,
       date: DateTime.now(),
       category: Category.work,
     ),
     Expense(
       title: 'Cinema',
-      amount: 10.88,
+      amount: 1200.00,
       date: DateTime.now(),
       category: Category.leisure,
     ),
@@ -41,8 +42,8 @@ class _ExpensesState extends State<Expenses> {
     ScaffoldMessenger.of(context).clearSnackBars();
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        duration: Duration(seconds: 3),
-        content: Text("Expense Deleted"),
+        duration: const Duration(seconds: 3),
+        content: const Text("Expense Deleted"),
         action: SnackBarAction(
             label: 'Undo',
             onPressed: () {
@@ -89,7 +90,7 @@ class _ExpensesState extends State<Expenses> {
       ),
       body: Column(
         children: [
-          const Text('1'),
+          Chart(expenses: _registerdExpenses),
           Expanded(child: mainContent),
         ],
       ),
